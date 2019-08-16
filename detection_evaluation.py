@@ -63,14 +63,11 @@ def local_detection_test(obs_to_interprete):
         layer = ball[np.where(ball_pred == clf.predict(CF.reshape(1,-1)))]
         if k == 0:
             ball_ennemies = layer
-            print(ball_pred.mean())
             if (ball_pred.mean() == 1.0) or (ball_pred.mean() == 0.0):
-                print('cric crac')
                 N_BALL = 20000
                 ball = generate_inside_ball_new(obs_to_interprete, (a, b), n=N_BALL)
                 ball_pred = clf.predict(ball)
                 if (ball_pred.mean() == 1.0) or (ball_pred.mean() == 0.0):
-                    print('dans ma baraque')
                     return -2, 1
                 layer = ball[np.where(ball_pred == clf.predict(CF.reshape(1,-1)))]
         else:
